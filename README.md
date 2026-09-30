@@ -1,6 +1,37 @@
 # SDA Field Guides
 
-A React + JavaScript study app containing the five SDA guides: metrics monitoring, distributed key-value storage, calendaring, rolling Top-N requests, and Trending Shares.
+A React + JavaScript study app containing five Senior SWE **System Design & Architecture (SDA)** field guides: calendaring, trending shares, metrics monitoring, distributed key-value storage, and rolling Top-N requests.
+
+**Live demo:** https://sda-guide.netlify.app/
+
+## Features
+
+**Guides & navigation**
+- Five complete SDA field guides on a dashboard with per-question cards, categories, and numbering.
+- Client-side routing with a dedicated URL per guide, in-guide section links, and working browser back/forward.
+- Deep links to any section (for example `/guides/trending-shares#final-design`) that scroll into view on load.
+- Collapsible section sidebar that highlights the section you are viewing.
+
+**Active studying**
+- Four-color text highlighter (yellow / red / green / blue) with recoloring, single removal, per-guide clearing, and automatic overlap merging.
+- Rehearsal checklists with a live "N of M covered" progress count.
+- Expand or collapse all answers at once.
+- Print / save-to-PDF that temporarily expands collapsed answers and hides the app chrome.
+- Full-size, zoomable diagram viewer for whiteboard SVGs and the calendaring HLD image, dismissable with `Escape` and returning focus to the trigger.
+- Highlights and checklist progress persist per guide in the browser and are validated against the content, so stale marks are never painted onto changed text.
+
+**Content integrity**
+- Guide content is imported from the canonical HTML originals and rendered as a vetted element tree — no iframes and no executed HTML scripts.
+- The importer rejects scripts, inline event handlers, unexpected tags, and non-embedded media; scopes guide CSS to the reader; rewrites local links; and hashes content for change detection.
+- The original HTML guides are never modified by the app.
+
+**Runs anywhere, privately**
+- Fully offline after install: no runtime CDN scripts, remote fonts, or analytics. External reference links are the only network use.
+- Dev and preview servers bind to `127.0.0.1` only.
+- Responsive from 320px to desktop, with ARIA roles and keyboard support on the reader controls.
+
+**Quality**
+- Unit tests (`node:test`) for content fidelity and highlight logic, plus a headless-Chrome workflow test covering routing, reader controls, persistence, diagram zoom, responsive layout, and print — asserting zero external requests and zero console errors.
 
 ## Run locally
 
@@ -19,7 +50,24 @@ npm run build
 npm run preview
 ```
 
-The production preview runs at **http://127.0.0.1:4173**. A static deployment must rewrite non-asset routes to `index.html` for bookmarked `/guides/...` URLs.
+The production preview runs at **http://127.0.0.1:4173**.
+
+## Deploy
+
+The app is a static single-page build; the live demo runs on **Netlify** at https://sda-guide.netlify.app/.
+
+```bash
+npm ci --ignore-scripts
+npm run build      # static assets output to dist/
+```
+
+Publish the `dist/` directory. Because the app uses client-side routing, the host must serve `index.html` for unknown paths so bookmarked or refreshed `/guides/...` URLs resolve. This repo ships `public/_redirects` (copied to `dist/_redirects` by the build) with the Netlify SPA rule:
+
+```
+/*    /index.html    200
+```
+
+For other static hosts, configure the equivalent history-API fallback. On Netlify, set the build command to `npm run build` and the publish directory to `dist`.
 
 ## Reader features
 
