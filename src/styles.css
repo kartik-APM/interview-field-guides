@@ -1,0 +1,138 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #17283d;
+  background: #f1f5fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --ink: #17283d;
+  --muted: #506176;
+  --blue: #2058a5;
+  --teal: #076b63;
+  --line: #d9e2ed;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 16px; line-height: 1.7; }
+html { scroll-padding-top: 80px; }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+button, .app-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 9px 13px; border: 1px solid #b6c8dc; border-radius: 8px;
+  color: var(--blue); background: white; font: inherit; font-size: 12px;
+  font-weight: 700; text-decoration: none; cursor: pointer;
+}
+button:hover, .app-button:hover { background: #edf4ff; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+:focus-visible { outline: 3px solid #bd7100; outline-offset: 4px; }
+[hidden] { display: none !important; }
+.app-skip { position: fixed; top: -100px; left: 16px; z-index: 100; background: white; padding: 10px 16px; }
+.app-skip:focus { top: 8px; }
+.app-toolbar {
+  position: sticky; top: 0; z-index: 20; display: flex; align-items: center;
+  gap: 12px; height: 56px; padding: 8px 16px; background: white; border-bottom: 1px solid var(--line);
+}
+.app-toolbar > * { flex-shrink: 0; white-space: nowrap; }
+.app-toolbar-label { font-size: 12px; color: var(--muted); font-weight: 600; }
+.app-layout { display: grid; grid-template-columns: 266px minmax(0, 1fr); }
+.app-layout-collapsed { grid-template-columns: minmax(0, 1fr); }
+.app-reader-main { min-width: 0; }
+.app-sidebar {
+  position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto;
+  padding: 30px 22px; background: #13263e; color: #d4e1ef;
+}
+.app-sidebar .app-eyebrow { color: #93cfc9; }
+.app-sidebar-title { color: white; font-size: 22px; font-weight: 760; line-height: 1.3; }
+.app-sidebar p { font-size: 13px; color: #b7c7da; margin: 12px 0 24px; }
+.app-sidebar nav { display: grid; gap: 2px; }
+.app-sidebar nav a {
+  padding: 7px 10px; border-radius: 7px; color: #d4e1ef;
+  font-size: 13px; line-height: 1.5; text-decoration: none;
+}
+.app-sidebar nav a:hover, .app-sidebar nav a[aria-current] { background: #25405f; color: white; }
+.app-nav-group { margin: 18px 10px 5px; color: #95aac4; font-size: 10px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+.app-sidebar-note { margin-top: 26px; padding-top: 16px; border-top: 1px solid #35506c; font-size: 12px; }
+.guide-document { width: 100%; margin-inline: auto !important; }
+.app-notice { padding: 12px 20px; color: #7d1c1c; background: #fff0e9; font-size: 13px; }
+.app-highlight-popover {
+  position: fixed; z-index: 40; display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; background: white; border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 8px 24px #13263e40;
+}
+.app-highlight-popover .app-color { width: 24px; height: 24px; padding: 0; border-color: #00000030; border-radius: 6px; }
+.app-remove-highlight { min-width: 30px; padding: 3px 8px; color: #a12020; }
+.app-highlight-menu {
+  position: fixed; top: 64px; left: min(250px, calc(100vw - 270px)); z-index: 40;
+  width: 254px; padding: 18px; border: 1px solid var(--line); border-radius: 12px;
+  background: white; box-shadow: 0 12px 30px #13263e40; font-size: 13px;
+}
+.app-highlight-menu p { color: var(--muted); margin: 8px 0 12px; font-size: 12px; }
+.app-diagram-dialog {
+  width: min(96vw, 1800px); height: 92vh; max-width: 96vw; max-height: 92vh;
+  padding: 0; border: 1px solid var(--line); border-radius: 12px; background: white; color: var(--ink);
+}
+.app-diagram-dialog[open] { display: flex; flex-direction: column; }
+.app-diagram-dialog::backdrop { background: #13263eb8; }
+.app-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+.app-dialog-header strong { font-size: 14px; }
+.app-dialog-header button { flex-shrink: 0; }
+.app-diagram-scroll { flex: 1; min-height: 0; overflow: auto; padding: 16px; background: #f5f8fc; }
+.app-diagram-dialog .guide-document { width: max-content; min-width: 100%; max-width: none; padding: 0; background: white; }
+.app-diagram-dialog svg, .app-diagram-dialog img { display: block; min-width: 100%; }
+.app-dashboard { max-width: 1220px; margin: auto; padding: 40px 28px; }
+.app-hero { padding: 36px; border: 1px solid #c9dbea; border-radius: 18px; background: linear-gradient(125deg, #fff 20%, #eaf4ff 72%, #e4f5ef); }
+.app-eyebrow { color: var(--teal); font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 12px; }
+.app-dashboard h1 { margin: 0 0 12px; font-size: clamp(32px, 4vw, 46px); line-height: 1.15; letter-spacing: -.035em; }
+.app-dashboard h2 { font-size: 25px; line-height: 1.35; margin-bottom: 10px; }
+.app-lead { max-width: 850px; font-size: 18px; color: #344d67; }
+.app-badges, .app-jump-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+.app-badges span { padding: 4px 12px; border: 1px solid #b9cedd; border-radius: 999px; background: #ffffffb8; font-size: 12px; font-weight: 700; }
+.app-jump-links { gap: 10px 22px; font-size: 14px; }
+.app-question-section { margin-top: 32px; }
+.app-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 22px; }
+.app-guide-card { display: flex; flex-direction: column; padding: 26px; background: white; border: 1px solid var(--line); border-radius: 14px; scroll-margin-top: 20px; }
+.app-guide-card h3 { font-size: 22px; line-height: 1.3; letter-spacing: -.02em; margin: 0 0 12px; }
+.app-guide-card p { margin: 8px 0 16px; }
+.app-muted { color: var(--muted); font-size: 14px; }
+.app-card-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: auto; padding-top: 12px; font-size: 13px; }
+.app-primary { background: var(--blue); color: white; border-color: var(--blue); }
+.app-primary:hover { background: #194b91; }
+.app-card-footer { padding-top: 14px; margin-top: 18px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.app-reader-note { padding: 18px 22px; margin-top: 28px; border-left: 4px solid var(--teal); border-radius: 0 8px 8px 0; background: #eaf7f3; font-size: 14px; }
+.app-footer { margin-top: 26px; color: var(--muted); font-size: 12px; text-align: center; }
+.app-message { max-width: 900px; margin: auto; padding: 60px 24px; }
+@media (max-width: 1160px) {
+  .app-layout { grid-template-columns: 218px minmax(0, 1fr); }
+  .app-layout-collapsed { grid-template-columns: minmax(0, 1fr); }
+  .app-sidebar { padding: 25px 14px; }
+}
+@media (max-width: 850px) {
+  .app-layout { display: block; }
+  .app-sidebar { position: static; height: auto; padding: 20px; }
+  .app-sidebar-title { font-size: 21px; }
+  .app-sidebar p, .app-sidebar-note, .app-nav-group, .app-toolbar-label { display: none; }
+  .app-sidebar nav { display: flex; overflow-x: auto; gap: 5px; margin-top: 15px; padding-bottom: 6px; }
+  .app-sidebar nav a { flex: none; border: 1px solid #36516e; font-size: 12px; }
+  .app-dashboard { padding: 20px 16px; }
+  .app-hero { padding: 25px 22px; }
+  .app-cards { grid-template-columns: 1fr; }
+  .app-guide-card { padding: 23px; }
+  .app-lead { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .app-toolbar { gap: 6px; padding-inline: 8px; }
+  .app-toolbar > button, .app-toolbar > .app-button { padding: 7px 8px; font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: white; }
+  .app-toolbar, .app-sidebar, .app-skip, .app-highlight-menu, .app-highlight-popover, .app-diagram-dialog, .app-notice { display: none !important; }
+  .app-layout { display: block; }
+  .app-dashboard { padding: 0; }
+  .app-hero { padding: 0 0 16pt; border: 0; background: white; }
+  .app-jump-links { display: none; }
+  .app-cards { display: block; }
+  .app-guide-card { margin-bottom: 14pt; padding: 14pt; break-inside: avoid; }
+  .app-primary { background: white; color: var(--blue); }
+  mark.hl { print-color-adjust: exact; }
+}

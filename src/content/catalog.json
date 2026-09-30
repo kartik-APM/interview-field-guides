@@ -1,0 +1,67 @@
+[
+  {
+    "id": "calendaring",
+    "number": 1,
+    "title": "Calendaring and scheduling website",
+    "category": "Calendaring",
+    "description": "Let people register, create events, invite others by email, and view registered invitees' free/busy information. Explain the overlap SQL and how the database scales beyond one machine.",
+    "focus": "relational modeling, internal/external attendees, recurring events, time zones, free/busy correctness, and partitioning.",
+    "sectionCount": 22,
+    "checklistCount": 14,
+    "sourceFile": "senior-ic3-calendaring-system-design.html",
+    "sourceHash": "efc4d60b9cc7d6cb2e4ccfa589b50dcafdccdc853273f4832aea7e864a6891b3",
+    "textHash": "6cbe423fb3e1072e606d202f79a6a0af8887a2985b1b9beb22218e18af448e9a"
+  },
+  {
+    "id": "trending-shares",
+    "number": 2,
+    "title": "Most-shared articles across regions",
+    "category": "Trending Shares",
+    "description": "Aggregate the N most-shared articles globally in near-real time over the last five minutes, one hour, and one day, with 1M–10M distinct shared articles per day.",
+    "focus": "asynchronous multi-region collection, article identity, three rolling windows, expiration without new events, safe Top-N merging, and snapshot serving.",
+    "sectionCount": 22,
+    "checklistCount": 14,
+    "sourceFile": "senior-ic3-trending-shares-design.html",
+    "sourceHash": "cc4a83b237564e3cea3e9b45cdf55d4f136509a648f1978bcc113d61cb5071cd",
+    "textHash": "8b5978bb44f2852f62b6fb6f6fe5cba9c2045ef82599a348dc98ff799d6436fb"
+  },
+  {
+    "id": "metrics-monitoring",
+    "number": 3,
+    "title": "Metric collection and querying",
+    "category": "Metrics",
+    "description": "Collect metrics from a large fleet and return either one node's metric history or a metric aggregated across all nodes. Support metric discovery, one-year retention, and fast recent queries.",
+    "focus": "durable collection, time-series storage, fleet pre-aggregation, availability, freshness, and multi-datacenter operation.",
+    "sectionCount": 21,
+    "checklistCount": 16,
+    "sourceFile": "senior-ic3-metrics-monitoring-design.html",
+    "sourceHash": "cf71aef5f8b2db788bdf51b504cf4f7531405edba55e21b9fa1292eeb2d5faef",
+    "textHash": "7dd9f7fc16028ced9a31b3a5b0f8551f1f3eb92b14dd05ff52e21995b9b21437"
+  },
+  {
+    "id": "distributed-kv-store",
+    "number": 4,
+    "title": "Evolve a single-machine key-value store",
+    "category": "Distributed storage",
+    "description": "Build around an existing high-performance store to provide scalable, durable, highly available put/get/delete operations without rewriting the local storage engine.",
+    "focus": "sharding, metadata and routing, replicated writes, safe failover, online data movement, and strong-consistency follow-ups.",
+    "sectionCount": 20,
+    "checklistCount": 14,
+    "sourceFile": "senior-ic3-distributed-kv-store-design.html",
+    "sourceHash": "5eecd965f7599e4b9b37bf4cd9ea44602d2fae3d8e138f081887dd47281fecd6",
+    "textHash": "c39d0221e39926b95f8ee7c24ce5450295ad99aadb0eeab35a532a8642e67731"
+  },
+  {
+    "id": "top-n-requests",
+    "number": 5,
+    "title": "Top requests over the last 24 hours",
+    "category": "Distributed Top-N",
+    "description": "Find the N most frequent search strings, requested keys, or other request identities across hundreds of machines over the trailing 24 hours, with efficient computation and network use.",
+    "focus": "source collection, lossless local combining, key-based partitioning, rolling expiration, exact Top-N merging, and replay-safe recovery.",
+    "sectionCount": 21,
+    "checklistCount": 16,
+    "sourceFile": "senior-ic3-top-n-requests-design.html",
+    "sourceHash": "cbe7a354ae5e183ef3dbc816188c39a5763a3de5fc8717d7810f7a11bcbc7412",
+    "textHash": "1a507a73de84a1dfe9eede6fbe268e963e86a0c9ba388aa651de9a0d0617fef5"
+  }
+]
